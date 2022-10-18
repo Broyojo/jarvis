@@ -23,3 +23,30 @@ Some of the technologies I am thinking of are:
 It will probably have a web / cli interface. Backend will be written in Python most likely.
 
 I may use multiple models, each has specific tasks.
+
+Voice transcription: `tiny` model
+
+## Pseudocode
+
+```python
+conversation <- "{starting prompt}\n \nHuman: "
+
+while conversation is ongoing:
+    previous text <- ""
+    for every 30 seconds:
+        audio <- record 30 seconds of audio
+        text, still talking <- transcribe(previous text, audio)
+        if not still talking:
+            stop recording
+        previous text <- previous text + text
+
+    conversation <- conversation + previous text
+
+    response <- transformer_language_model(conversation)
+
+    language <- detect_language(response)
+
+    TTS <- TTS_for(langauge)
+
+    audio <- TTS(language)
+```
