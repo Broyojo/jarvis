@@ -16,6 +16,8 @@ class Recorder:
         self.threshold_intensity = 120
 
     def listen(self):
+        # code based on https://github.com/suda/open-home/blob/master/Python/listen/listen.py
+    
         p = pyaudio.PyAudio()
 
         stream = p.open(
