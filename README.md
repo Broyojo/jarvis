@@ -1,52 +1,12 @@
 # Jarvis
 
 ## What is it?
-This is a grand unified AI assistant for managing my life. Here are some things it will be able to do:
+A nice voice assistant using GPT-3
 
-- Calendar Planning
-- Advanced Question-Answering
-- Service Integration
-- Researching and Web Search
-- Emailing, Messaging, and Calling
-- Voice recognition and text to speech
+## How does it work?
+Audio from the microphone is fed into a voice activity detection model. Once the person stops speaking for 2 seconds, the audio is sent to OpenAI's Whisper model for transcription. This transcribed text is appended to a conversation which is sent to GPT-3. The response created by GPT-3 is then run through a TTS model from the Coqai TTS library. The audio from the TTS model is then played through the speakers.  After this, the process restarts.
 
-## How will it work?
-
-Not very sure yet. 
-
-Some of the technologies I am thinking of are:
-- OpenAI GPT-3 or GPT-2 (with finetuning) for advanced AI features
-- Google Developer API for connecting to services
-- OpenAI Whisper for advanced multilingual speech to text
-- Selenium / Beautiful Soup for web scraping and research
-
-It will probably have a web / cli interface. Backend will be written in Python most likely.
-
-I may use multiple models, each has specific tasks.
-
-Voice transcription: `tiny` model
-
-## Pseudocode
-
-```python
-conversation <- "{starting prompt}\n \nHuman: "
-
-while conversation is ongoing:
-    previous text <- ""
-    for every 30 seconds:
-        audio <- record 30 seconds of audio
-        text, still talking <- transcribe(previous text, audio)
-        if not still talking:
-            stop recording
-        previous text <- previous text + text
-
-    conversation <- conversation + previous text
-
-    response <- transformer_language_model(conversation)
-
-    language <- detect_language(response)
-
-    TTS <- TTS_for(langauge)
-
-    audio <- TTS(language)
-```
+## Limitations
+- Currently the model only speaks in Chinese.
+- The model does not have access to actions such as using a calculator or browsing the internet.
+- The model is quite slow in its responses as it has to do a lot of audio processing, running models, and making API requests to GPT-3. 
