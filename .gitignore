@@ -2,3 +2,5 @@ __pycache__
 audio
 key.txt
 .vscode
+*.wav
+*.mp3

@@ -43,29 +43,6 @@ See https://github.com/openai/openai-python/blob/main/chatml.md for information 
         )
 
 
-# messages = [
-#     {
-#         "role": "system",
-#         "content": "You are a helpful assistant who can use external tools.",
-#     },
-#     {
-#         "role": "user",
-#         "content": "What is 234876 / 123?",
-#     },
-#     {
-#         "role": "assistant",
-#         "content": "234876 divided by 123 equals [calculator 234876 / 123]",
-#     },
-#     {
-#         "role": "user",
-#         "content": "What's the weather today?",
-#     },
-#     {
-#         "role": "assistant",
-#         "content": "The weather today is [weather [location]]",
-#     },
-# ]
-
 messages = [
     {
         "role": "system",
